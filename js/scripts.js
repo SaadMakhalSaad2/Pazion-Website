@@ -1,7 +1,63 @@
-/*!
-* Start Bootstrap - Modern Business v5.0.5 (https://startbootstrap.com/template-overviews/modern-business)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-modern-business/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-auth.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-analytics.js";
+
+document.addEventListener("DOMContentLoaded", function (event) {
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDJ9ptySym5DgJT9wnKSbYGuZ3k9av7UsA",
+    authDomain: "pazion-d1b6c.firebaseapp.com",
+    projectId: "pazion-d1b6c",
+    storageBucket: "pazion-d1b6c.appspot.com",
+    messagingSenderId: "259375163869",
+    appId: "1:259375163869:web:b4627353698136bd292e34",
+    measurementId: "G-KKL7LHF0B5"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth();
+  const database = getDatabase();
+
+  auth.onAuthStateChanged(function (user) {
+    if (user) {
+      const starCountRef = ref(database, 'users/' + user.uid);
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        document.getElementById('welcomeName').innerText = 'Hi, ' + data.first_name ;
+        $("#login").hide();
+        $("#signup").hide();
+
+      });
+    } else {
+      return;
+    }
+  });
+ 
+
+  document.getElementById('logout').addEventListener('click', function(){
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      window.location.href = "login.html";
+    }).catch((error) => {
+      // An error happened.
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
