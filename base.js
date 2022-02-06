@@ -51,11 +51,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
          question_url: questionUrl.value,
          answerUrl: answerUrl.value
       }).then(() => {
-         window.location.href = 'index.html';
+         snack()
       });
 
 
    });
 
 });
+
+function snack() {
+   
+   var x = document.getElementById("snackbar");
+   x.className = "show";
+   setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
 
