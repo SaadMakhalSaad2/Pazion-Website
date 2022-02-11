@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
         console.log(data);
-        document.getElementById('welcomeName').innerText = 'Hi, ' + data.first_name ;
+        document.getElementById('welcomeName').innerText = 'Hi, ' + data.first_name;
         $("#login").hide();
         $("#signup").hide();
 
@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
       return;
     }
   });
- 
 
-  document.getElementById('logout').addEventListener('click', function(){
+
+  document.getElementById('logout').addEventListener('click', function () {
     signOut(auth).then(() => {
       // Sign-out successful.
       window.location.href = "login.html";
@@ -45,6 +45,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
       // An error happened.
     });
   });
+
+
+  const dropdowns = document.getElementsByClassName('topic');
+
+  for (let i = 0; i < dropdowns.length; i++) {
+    const item = dropdowns[i]
+    console.log(item);
+    item.addEventListener('click', function () {
+      console.log(item.id);
+      localStorage.setItem('topic_redirect', item.id)
+      window.location.href = "workplace.html";
+
+
+    })
+  }
 
 
 
