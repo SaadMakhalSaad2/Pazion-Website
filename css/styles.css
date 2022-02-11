@@ -730,7 +730,7 @@ progress {
 
   .container-sm,
   .container {
-    max-width: 540px;
+    max-width: 96%;
   }
 }
 
@@ -739,7 +739,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 720px;
+    max-width: 96%;
   }
 }
 
@@ -749,7 +749,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 960px;
+    max-width: 96%;
   }
 }
 
@@ -760,7 +760,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1140px;
+    max-width: 96%;
   }
 }
 
@@ -772,7 +772,7 @@ progress {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1320px;
+    max-width: 96%;
   }
 }
 
@@ -797,6 +797,8 @@ progress {
 
 .col {
   flex: 1 0 0%;
+  border: solid;
+  border-color: blue;
 }
 
 .row-cols-auto>* {
