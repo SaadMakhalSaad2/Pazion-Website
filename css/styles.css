@@ -28,7 +28,12 @@
   margin-bottom             : 10px;
   overflow                  : scroll;
   -webkit-overflow-scrolling: touch;
-  height: 35em;
+  height                    : 35em;
+}
+
+.selected {
+  color      : red;
+  font-weight: bold;
 }
 
 :root {

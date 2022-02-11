@@ -2,6 +2,10 @@ import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.5/fireb
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
 const topicTitle = document.getElementById('topic-title');
+var questionsListContainer = document.getElementById('questions-list');
+var questionIframe = document.getElementById('question-iframe');
+var answerIframe = document.getElementById('answer-iframe');
+
 document.addEventListener("DOMContentLoaded", function (event) {
   const firebaseConfig = {
     apiKey: "AIzaSyDJ9ptySym5DgJT9wnKSbYGuZ3k9av7UsA",
@@ -17,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth();
   const database = getDatabase();
+  const topicQuestions = []
 
 
   auth.onAuthStateChanged(function (user) {
@@ -26,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const data = snapshot.val();
         const allQuestions = json2array(data);
         console.log(allQuestions);
-        const topicQuestions = []
         console.log(localStorage.getItem('topic_redirect_id'))
 
         for (let i = 0; i < allQuestions.length; i++) {
@@ -37,6 +41,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
         console.log(topicQuestions)
+        topicQuestions.forEach(function (question) {
+          var li = document.createElement('li');
+          li.setAttribute('class','list-group-item');
+
+          questionsListContainer.appendChild(li);
+
+          li.innerHTML=li.innerHTML + 'Question '+ (topicQuestions.indexOf(question)+1);
+
+        });
 
 
       });
@@ -46,10 +59,31 @@ document.addEventListener("DOMContentLoaded", function (event) {
   });
 
 
+  document.getElementById("questions-list").addEventListener("click", function (e) {
+
+    const ulList = document.getElementById("questions-list");
+    const li = document.getElementsByTagName('li');
+    var nodes = Array.from(ulList.children);
+    let selected = -1;
+    if (selected !== nodes.indexOf(e.target)) {
+      selected = nodes.indexOf(e.target);
+      console.log(selected);
+    } else {
+      console.log("Already selected");
+    }
 
 
+    if (e.target && e.target.nodeName == "LI") {
+      e.target.classList.add('selected')
+      var currentQuestionUrl = topicQuestions[selected].question_url.toString().split('preview')[0] + 'preview'
+      var currentAnswerUrl = topicQuestions[selected].answerUrl.toString().split('preview')[0] + 'preview'
+      console.log(currentQuestionUrl)
+      console.log(currentAnswerUrl)
+      document.getElementById('question-iframe').src = currentQuestionUrl;
+      document.getElementById('answer-iframe').src = currentAnswerUrl;
 
-
+    }
+  });
 
 
 });
