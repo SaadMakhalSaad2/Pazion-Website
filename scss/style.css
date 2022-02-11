@@ -1,3 +1,7 @@
+
+
+
+
 /* @extend display-flex; */
 display-flex {
   display: -webkit-box;
@@ -301,10 +305,23 @@ h1 {
   font-weight: 600;
   color: #888;
   text-align: center;
-  -webkit-transition: border-color .15s ease-out,  color .25s ease-out,  background-color .15s ease-out, -webkit-box-shadow .15s ease-out;
-  transition: border-color .15s ease-out,  color .25s ease-out,  background-color .15s ease-out, -webkit-box-shadow .15s ease-out;
-  transition: border-color .15s ease-out,  color .25s ease-out,  background-color .15s ease-out, box-shadow .15s ease-out;
-  transition: border-color .15s ease-out,  color .25s ease-out,  background-color .15s ease-out, box-shadow .15s ease-out,  -webkit-box-shadow .15s ease-out;
+  -webkit-transition: border-color .15s ease-out, 
+ color .25s ease-out, 
+ background-color .15s ease-out,
+ -webkit-box-shadow .15s ease-out;
+  transition: border-color .15s ease-out, 
+ color .25s ease-out, 
+ background-color .15s ease-out,
+ -webkit-box-shadow .15s ease-out;
+  transition: border-color .15s ease-out, 
+ color .25s ease-out, 
+ background-color .15s ease-out,
+ box-shadow .15s ease-out;
+  transition: border-color .15s ease-out, 
+ color .25s ease-out, 
+ background-color .15s ease-out,
+ box-shadow .15s ease-out, 
+ -webkit-box-shadow .15s ease-out;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
