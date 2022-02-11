@@ -7,6 +7,7 @@ var questionIframe = document.getElementById('question-iframe');
 var answerIframe = document.getElementById('answer-iframe');
 
 document.addEventListener("DOMContentLoaded", function (event) {
+  topicTitle.innerHTML = localStorage.getItem('topic_redirect_title')
   const firebaseConfig = {
     apiKey: "AIzaSyDJ9ptySym5DgJT9wnKSbYGuZ3k9av7UsA",
     authDomain: "pazion-d1b6c.firebaseapp.com",
@@ -43,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
         console.log(topicQuestions)
         topicQuestions.forEach(function (question) {
           var li = document.createElement('li');
-          li.setAttribute('class','list-group-item');
+          li.setAttribute('class', 'list-group-item');
 
           questionsListContainer.appendChild(li);
 
-          li.innerHTML=li.innerHTML + 'Question '+ (topicQuestions.indexOf(question)+1);
+          li.innerHTML = li.innerHTML + 'Question ' + (topicQuestions.indexOf(question) + 1);
 
         });
 
@@ -74,6 +75,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
     if (e.target && e.target.nodeName == "LI") {
+      var lis = document.getElementById("questions-list").getElementsByTagName("li");
+     
+      console.log(`Saad: ${lis[2]}`)
+      for(let i = 0; i<lis.length; i++){
+        lis[i].classList.remove('selected')
+      }
+
       e.target.classList.add('selected')
       var currentQuestionUrl = topicQuestions[selected].question_url.toString().split('preview')[0] + 'preview'
       var currentAnswerUrl = topicQuestions[selected].answerUrl.toString().split('preview')[0] + 'preview'
