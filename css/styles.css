@@ -16,6 +16,14 @@
   margin-bottom: 1em;
 }
 
+#topic-title{
+  color: #0c85d0;
+}
+
+.workplace-wrapper{
+  padding: 1em;
+}
+
 :root {
   --bs-blue            : #0d6efd;
   --bs-indigo          : #6610f2;

@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     console.log(item);
     item.addEventListener('click', function () {
       console.log(item.id);
-      localStorage.setItem('topic_redirect', item.id)
+      localStorage.setItem('topic_redirect_id', item.id)
+      localStorage.setItem('topic_redirect_title', item.innerText)
+
       window.location.href = "workplace.html";
 
 
