@@ -802,11 +802,18 @@ progress {
   padding-left : calc(var(--bs-gutter-x) * 0.5);
   margin-top   : var(--bs-gutter-y);
 }
+#questioniframe {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
 
 .col {
   flex: 1 0 0%;
   border: solid;
-  border-color: blue;
+  border-color: aqua;
+  border-radius: 5px;
+  padding: 0px;
 }
 
 .row-cols-auto>* {
@@ -876,7 +883,10 @@ progress {
 
 .col-6 {
   flex : 0 0 auto;
-  width: 50%;
+  border: solid;
+  border-color: aqua;
+  border-radius: 5px;
+  padding: 0px;
 }
 
 .col-7 {
