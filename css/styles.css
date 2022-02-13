@@ -820,13 +820,20 @@ progress {
 
 #questioniframe, #question-iframe {
   width : 100%;
-  height: 100%;
+  height: 66%;
   margin: 0px;
 }
 #answeriframe, #answer-iframe {
   width : 100%;
   height: 100%;
   margin: 0px;
+}
+
+.result-correct{
+  color: green;
+}
+.result-wrong{
+  color: red;
 }
 
 .col {

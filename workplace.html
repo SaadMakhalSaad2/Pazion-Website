@@ -54,15 +54,30 @@
         <div class="container" id="container" style="width: 100%;">
             <div class="row">
                 <div class="col-6 col-md-4">
-                    <ul class="list-group" id="questions-list">
+                    <ul class="list-group" id="questions-list"></ul>
+                </div>
+                <div class="col ">
+                    <div class="p-4" id="empty">
+                        <h4>Select question from the list</h3>
+                    </div>
 
-                    </ul>
-                </div>
-                <div class="col">
                     <iframe src="" id="question-iframe"></iframe>
+
+                    <div class="p-4 d-none" id="answerContainer">
+                        <select class="form-control" id="attemptedAnswerDropDown">
+                            <option value="topic">Choose correct answer</option>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                        </select>
+                        <button type="button" class="btn btn-primary my-2" id="submitAnswer">Submit</button>
+                        <p id="result" class="result-wrong d-none">Correct!</p>
+                    </div>
                 </div>
                 <div class="col">
-                    <iframe src="" id="answer-iframe"></iframe>
+                    <iframe src="" id="answer-iframe" class="d-none"></iframe>
+
                 </div>
             </div>
         </div>
