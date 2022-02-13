@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
    const topicDropdown = document.getElementById('topicDropdown')
    const questionUrl = document.getElementById('questionUrl')
    const answerUrl = document.getElementById('answerUrl')
+   const correctAnswerDropdown = document.getElementById('correctAnswerDropdown')
 
 
    const firebaseConfig = {
@@ -39,22 +40,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
          alert('Invalid answer url')
          return
       }
+      if (correctAnswerDropdown.selectedIndex < 1) {
+         alert('Please choose correct answer')
+         return
+      }
 
 
       const questionId = `${subjectDropdown.value.toString()}_${topicDropdown.value.toString().split('_')[0]}_${Date.now().toString()}`
       console.log(questionId)
+      console.log(correctAnswerDropdown.value.toString())
       set(ref(database, 'questions/' + questionId), {
          id: questionId,
          subject: subjectDropdown.value.toString(),
          topic: topicDropdown.value.toString(),
          date_uploaded: Date.now().toString(),
          question_url: questionUrl.value,
-         answerUrl: answerUrl.value
+         answerUrl: answerUrl.value,
+         correct_answer: correctAnswerDropdown.value.toString()
       }).then(() => {
          snack()
+         correctAnswerDropdown.selectedIndex = 0
+         questionUrl.value = ''
+         answerUrl.value = ''
       });
-
-
    });
 
 });
